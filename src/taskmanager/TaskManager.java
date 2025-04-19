@@ -71,6 +71,7 @@ public class TaskManager {
     // обновление задач, подзадач, эпиков
     public void updateTask(Task task) {
         if (task == null || !tasks.containsKey(task.getId())) {
+            assert task != null;
             throw new NoSuchElementException("Task with ID " + task.getId() + " not found");
         }
         tasks.put(task.getId(), task);

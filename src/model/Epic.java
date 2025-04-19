@@ -1,11 +1,9 @@
 package model;
 
-import taskmanager.TaskManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
+
 
 public class Epic extends Task {
     private final List<Subtask> subtasks;
