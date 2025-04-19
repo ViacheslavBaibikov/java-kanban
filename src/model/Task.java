@@ -7,24 +7,21 @@ public class Task {
     protected String name;
     protected String description;
     protected TaskStatus status;
-    protected TaskPriority priority;  // Используем TaskPriority для приоритета
+    protected TaskPriority priority;
     protected TaskType type;
 
     public Task(String name, String description, TaskStatus status, TaskPriority priority) {
-        // Генерация ID
         this.name = name;
         this.description = description;
         this.status = status;
         this.priority = priority;
-        this.type = TaskType.TASK; // По умолчанию тип задачи - TASK
+        this.type = TaskType.TASK;
     }
-
 
     public void setPriority(TaskPriority priority) {
         this.priority = priority;
     }
 
-    // Геттеры и сеттеры для других полей
     public int getId() {
         return id;
     }
@@ -33,10 +30,9 @@ public class Task {
         if (this.id == 0) {  // ID ещё не был присвоен
             this.id = id;
         } else {
-            throw new IllegalStateException("ID уже присвоен и не может быть изменен.");
+            throw new IllegalStateException("ID уже присвоен");
         }
     }
-
 
     public void setName(String name) {
         this.name = name;
@@ -54,7 +50,6 @@ public class Task {
     public void setStatus(TaskStatus status) {
         this.status = status;
     }
-
 
     @Override
     public boolean equals(Object o) {
