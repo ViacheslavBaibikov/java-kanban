@@ -72,7 +72,7 @@ public class TaskManager {
     public void updateTask(Task task) {
         if (task == null || !tasks.containsKey(task.getId())) {
             assert task != null;
-            throw new NoSuchElementException("Task with ID " + task.getId() + " not found");
+            throw new NoSuchElementException("Задача с ID " + task.getId() + " не найдена");
         }
         tasks.put(task.getId(), task);
     }
