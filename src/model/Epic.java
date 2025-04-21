@@ -8,11 +8,12 @@ import java.util.Objects;
 public class Epic extends Task {
     private final List<Subtask> subtasks;
 
-    public Epic(String name, String description, TaskStatus status, TaskPriority priority) {
-        super(name, description, status, priority);
+    public Epic(String name, String description, TaskPriority priority) {
+        super(name, description, TaskStatus.NEW, priority); // статус задается по умолчанию
         this.type = TaskType.EPIC;
         this.subtasks = new ArrayList<>();
     }
+
 
     // Метод для добавления подзадачи
     public void addSubtask(Subtask subtask) {

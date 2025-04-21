@@ -42,8 +42,6 @@ public class TaskManager {
         return new ArrayList<>(subtasks.values());
     }
 
-
-
     public void createTask(Task task) {
         int id = generateId();
         task.setId(id);
@@ -71,7 +69,6 @@ public class TaskManager {
     // обновление задач, подзадач, эпиков
     public void updateTask(Task task) {
         if (task == null || !tasks.containsKey(task.getId())) {
-            assert task != null;
             throw new NoSuchElementException("Задача с ID " + task.getId() + " не найдена");
         }
         tasks.put(task.getId(), task);
@@ -83,13 +80,27 @@ public class TaskManager {
         }
     }
 
+    //обновление подзадач - исправлено: теперь удаляется ссылка на старый объект
+    //подзадачи и добавляется новая
     public void updateSubtask(Subtask subtask) {
-        if (subtasks.containsKey(subtask.getId())) {
-            subtasks.put(subtask.getId(), subtask);
-            Epic epic = epics.get(subtask.getEpicId());
-            if (epic != null) {
-                updateEpicStatus(epic);
+        if (subtask == null || !subtasks.containsKey(subtask.getId())) {
+            throw new NoSuchElementException("Подзадача с ID " + (subtask != null ? subtask.getId() : "null") + " не найдена");
+        }
+
+        subtasks.put(subtask.getId(), subtask);
+
+        Epic epic = epics.get(subtask.getEpicId());
+        if (epic != null) {
+            List<Subtask> epicSubtasks = epic.getSubtasks();
+            for (int i = 0; i < epicSubtasks.size(); i++) {
+                if (epicSubtasks.get(i).getId() == subtask.getId()) {
+                    epicSubtasks.remove(i);
+                    break;
+                }
             }
+
+            epic.getSubtasks().add(subtask);
+            updateEpicStatus(epic);
         }
     }
 
@@ -118,14 +129,27 @@ public class TaskManager {
         }
     }
 
-    // получаем список подзадач эпика
+    // удаляем все
+    public void deleteAll() {
+        tasks.clear();
+        subtasks.clear();
+        for (Epic epic : epics.values()) {
+            epic.getSubtasks().clear();
+            //updateEpicStatus(epic);
+        }
+        epics.clear();
+    }
+
+
+    // получаем копию списка подзадач эпика  - исправлено - теперь возвращает копию а не сам список
     public List<Subtask> getSubtasksOfEpic(int epicId) {
         Epic epic = epics.get(epicId);
         if (epic != null) {
-            return epic.getSubtasks();
+            return new ArrayList<>(epic.getSubtasks());
         }
         return new ArrayList<>();
     }
+
 
     // изменение приоритета
     public void updateTaskPriority(int taskId, TaskPriority priority) {

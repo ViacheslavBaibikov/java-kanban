@@ -17,14 +17,14 @@ public class Main {
         taskManager.createTask(task2);
 
         // Создание эпиков с подзадачами
-        Epic epic1 = new Epic("Эпик 1", "Описание", TaskStatus.IN_PROGRESS, TaskPriority.MEDIUM);
+        Epic epic1 = new Epic("Эпик 1", "Описание", TaskPriority.MEDIUM);
         taskManager.createEpic(epic1);
         Subtask subtask1 = new Subtask("Подзадача 1", "Описание", TaskStatus.NEW, TaskPriority.HIGH, epic1.getId());
         taskManager.createSubtask(subtask1);
         Subtask subtask2 = new Subtask("Подзадача 2", "Описание", TaskStatus.IN_PROGRESS, TaskPriority.LOW, epic1.getId());
         taskManager.createSubtask(subtask2);
 
-        Epic epic2 = new Epic("Эпик 2", "Описание", TaskStatus.NEW, TaskPriority.LOW);
+        Epic epic2 = new Epic("Эпик 2", "Описание", TaskPriority.LOW);
         taskManager.createEpic(epic2);
         Subtask subtask3 = new Subtask("Подзадача 3", "Описание", TaskStatus.DONE, TaskPriority.MEDIUM, epic2.getId());
         taskManager.createSubtask(subtask3);
@@ -108,6 +108,9 @@ public class Main {
                     updateTaskOrSubtaskPriority(taskManager, scanner);
                     break;
                 case 13:
+                    deleteAllTasks(taskManager);
+                    break;
+                case 14:
                     System.out.println("Выход из программы.");
                     return;
                 default:
@@ -131,7 +134,8 @@ public class Main {
         System.out.println("10. Вывести все задачи");
         System.out.println("11. Вывести подзадачи эпика");
         System.out.println("12. Обновить приоритет задачи или подзадачи");
-        System.out.println("13. Выход");
+        System.out.println("13. Удалить все задачи, эпики и подзадачи");
+        System.out.println("14. Выход");
         System.out.print("Выберите опцию: ");
     }
 
@@ -237,7 +241,7 @@ public class Main {
         System.out.print("Введите описание эпика: ");
         String description = getStringInput(scanner);
 
-        Epic epic = new Epic(name, description, TaskStatus.IN_PROGRESS, TaskPriority.MEDIUM);
+        Epic epic = new Epic(name, description, TaskPriority.MEDIUM);
         taskManager.createEpic(epic);
         System.out.println("Эпик создан с ID: " + epic.getId());
     }
@@ -386,4 +390,11 @@ public class Main {
         System.out.println("Подзадача с ID " + id + " удалена.");
 
     }
+
+    //удалить все
+    private static void deleteAllTasks(TaskManager taskManager) {
+        taskManager.deleteAll();
+        System.out.println("Все задачи, эпики и подзадачи удалены");
+    }
+
 }
