@@ -102,27 +102,24 @@ public class Main {
                     deleteAllTasks(taskManager);
                     break;
                 case 11:
-                    deleteAllSubtasks(taskManager);
-                    break;
-                case 12:
                     deleteSubtasksByEpic(taskManager, scanner);
                     break;
-                case 13:
+                case 12:
                     deleteAllEpics(taskManager);
                     break;
-                case 14:
+                case 13:
                     printAllTasks(taskManager);
                     break;
-                case 15:
+                case 14:
                     printSubtasksOfEpic(taskManager, scanner);
                     break;
-                case 16:
+                case 15:
                     updateTaskOrSubtaskPriority(taskManager, scanner);
                     break;
-                case 17:
+                case 16:
                     deleteAll(taskManager);
                     break;
-                case 18:
+                case 17:
                     System.out.println("Выход из программы.");
                     return;
                 default:
@@ -144,14 +141,13 @@ public class Main {
         System.out.println("8. Удалить эпик");
         System.out.println("9. Удалить подзадачу");
         System.out.println("10. Удалить все задачи");
-        System.out.println("11. Удалить все подзадачи всех эпиков");
-        System.out.println("12. Удалить все подзадачи конкретного эпика");
-        System.out.println("13. Удалить все эпики");
-        System.out.println("14. Вывести все задачи");
-        System.out.println("15. Вывести подзадачи эпика");
-        System.out.println("16. Обновить приоритет задачи или подзадачи");
-        System.out.println("17. Удалить все задачи, эпики и подзадачи");
-        System.out.println("18. Выход");
+        System.out.println("11. Удалить все подзадачи конкретного эпика");
+        System.out.println("12. Удалить все эпики");
+        System.out.println("13. Вывести все задачи");
+        System.out.println("14. Вывести подзадачи эпика");
+        System.out.println("15. Обновить приоритет задачи или подзадачи");
+        System.out.println("16. Удалить все задачи, эпики и подзадачи");
+        System.out.println("17. Выход");
         System.out.print("Выберите опцию: ");
     }
 
@@ -417,11 +413,6 @@ public class Main {
     private static void deleteAllTasks(TaskManager taskManager) {
         taskManager.deleteAllTasks();
         System.out.println("Все задачи удалены");
-    }
-    //удаляем все подзадачи всех эпиков
-    private static void deleteAllSubtasks(TaskManager taskManager) {
-        taskManager.deleteAllSubtasks();
-        System.out.println("Все подзадачи удалены");
     }
 
     //удаляем все подзадачи конкретного эпика

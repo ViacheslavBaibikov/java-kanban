@@ -135,14 +135,6 @@ public class TaskManager {
         tasks.clear();
     }
 
-    // Удаление всех подзадач и потом очистка списка подзадач у эпиков
-    public void deleteAllSubtasks() {
-        for (Epic epic : epics.values()) {
-            epic.getSubtasks().clear();
-            updateEpicStatus(epic);
-        }
-        subtasks.clear();
-    }
     //удаление всех подзадач конкретного эпика
     public void deleteSubtasksByEpicId(int epicId) {
         Epic epic = epics.get(epicId);
