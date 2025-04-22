@@ -22,6 +22,10 @@ public class Task {
         this.priority = priority;
     }
 
+    public TaskType getType() {
+        return type;
+    }
+
     public int getId() {
         return id;
     }

@@ -129,17 +129,53 @@ public class TaskManager {
         }
     }
 
-    // удаляем все
+
+    // Удаление всех задач
+    public void deleteAllTasks() {
+        tasks.clear();
+    }
+
+    // Удаление всех подзадач и потом очистка списка подзадач у эпиков
+    public void deleteAllSubtasks() {
+        for (Epic epic : epics.values()) {
+            epic.getSubtasks().clear();
+            updateEpicStatus(epic);
+        }
+        subtasks.clear();
+    }
+    //удаление всех подзадач конкретного эпика
+    public void deleteSubtasksByEpicId(int epicId) {
+        Epic epic = epics.get(epicId);
+        if (epic == null) {
+            System.out.println("Эпик с ID " + epicId + " не найден.");
+            return;
+        }
+
+        for (Subtask subtask : epic.getSubtasks()) {
+            subtasks.remove(subtask.getId());
+        }
+
+        for (Subtask subtask : epic.getSubtasks()) {
+            epic.removeSubtask(subtask);
+        }
+
+        epic.getSubtasks().clear();
+        updateEpicStatus(epic);
+    }
+
+
+    // Удаление всех эпиков со вложенными в них подзадачами
+    public void deleteAllEpics() {
+        epics.clear();
+        subtasks.clear();
+    }
+
+    // удаляем все задачи эпики и их подзадачи
     public void deleteAll() {
         tasks.clear();
         subtasks.clear();
-        for (Epic epic : epics.values()) {
-            epic.getSubtasks().clear();
-            //updateEpicStatus(epic);
-        }
         epics.clear();
     }
-
 
     // получаем копию списка подзадач эпика  - исправлено - теперь возвращает копию а не сам список
     public List<Subtask> getSubtasksOfEpic(int epicId) {
