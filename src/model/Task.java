@@ -18,17 +18,18 @@ public class Task {
         this.type = TaskType.TASK;
     }
 
+
     public void setPriority(TaskPriority priority) {
         this.priority = priority;
     }
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
     public void setId(int id) {
-        if (this.id == 0) {  // ID ещё не был присвоен
+        if (this.id == 0) {
             this.id = id;
         } else {
             throw new IllegalStateException("ID уже присвоен");
@@ -75,6 +76,25 @@ public class Task {
     public int hashCode() {
         return Objects.hash(id);
     }
-}
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public TaskPriority getPriority() {
+        return priority;
+    }
+
+    public TaskType getType() {
+        return type;
+    }
+
+    public void setType(TaskType type) {
+        this.type = type;
+    }
+}
 

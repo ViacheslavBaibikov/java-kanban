@@ -80,8 +80,6 @@ public class TaskManager {
         }
     }
 
-    //обновление подзадач - исправлено: теперь удаляется ссылка на старый объект
-    //подзадачи и добавляется новая
     public void updateSubtask(Subtask subtask) {
         if (subtask == null || !subtasks.containsKey(subtask.getId())) {
             throw new NoSuchElementException("Подзадача с ID " + (subtask != null ? subtask.getId() : "null") + " не найдена");
@@ -162,7 +160,7 @@ public class TaskManager {
         subtasks.clear();
     }
 
-    // удаляем все задачи эпики и их подзадачи
+    // удаляем все задачи, эпики и их подзадачи
     public void deleteAll() {
         tasks.clear();
         subtasks.clear();
