@@ -11,7 +11,6 @@ public class HistoryManagerTest {
     @Test
     public void testHistoryManagerStoresPreviousTaskVersions() {
         InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
-        TaskManager taskManager = new InMemoryTaskManager(historyManager);
 
         Task task = new Task("Task 1", "Description", TaskStatus.NEW, TaskPriority.MEDIUM);
 

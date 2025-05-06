@@ -77,9 +77,6 @@ public class Task {
         return Objects.hash(id);
     }
 
-    public String getName() {
-        return name;
-    }
 
     public String getDescription() {
         return description;
@@ -89,12 +86,5 @@ public class Task {
         return priority;
     }
 
-    public TaskType getType() {
-        return type;
-    }
-
-    public void setType(TaskType type) {
-        this.type = type;
-    }
 }
 
