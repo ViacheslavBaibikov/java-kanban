@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        TaskManager taskManager = Managers.getDefault(); // Используем Managers для получения TaskManager
+        TaskManager taskManager = Managers.getDefault();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {

@@ -1,9 +1,6 @@
 package test;
 
-import model.Epic;
-import model.Subtask;
-import model.TaskPriority;
-import model.TaskStatus;
+import model.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

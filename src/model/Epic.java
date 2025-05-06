@@ -15,13 +15,13 @@ public class Epic extends Task {
     }
 
 
-    // Метод для добавления подзадачи
+    //  добавление подзадачи
     public void addSubtask(Subtask subtask) {
         Objects.requireNonNull(subtask, "Подзадача не может быть пустой");
         subtasks.add(subtask);
     }
 
-    // Метод для удаления подзадачи по id
+    // удаление подзадачи по id
     public void removeSubtask(Subtask subtask) {
         subtasks.remove(subtask);
     }

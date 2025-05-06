@@ -1,8 +1,6 @@
 package test;
 
-import manager.HistoryManager;
-import manager.InMemoryHistoryManager;
-import manager.InMemoryTaskManager;
+import manager.*;
 import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
